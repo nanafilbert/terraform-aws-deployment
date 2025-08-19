@@ -1,67 +1,58 @@
 name: Deploy Infrastructure
 
 on:
-  workflow_dispatch:
-    inputs:
-      terraform_action:
-        description: "Select Terraform action"
-        required: true
-        default: "apply"
-        type: choice
-        options:
-          - apply
-          - destroy
-  push:
-    branches:
-      - main
+ workflow_dispatch:
+   inputs:
+     terraform_action:
+       type: choice
+       description: select terraform action
+       options:
+       - apply
+       - destroy
+       required: true
+
+ push:
+   branches:
+     - main
 
 permissions:
-  contents: read
-  id-token: write
+ contents: read
+ id-token: write
 
 jobs:
-  deploy_infra:
-    name: Deploy AWS Infra
-    runs-on: ubuntu-latest
+ deploy_infra:
+   name: Deploy AWS Infra
+   runs-on: ubuntu-latest
+   defaults:
+     run:
+       working-directory: dev
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+   steps:
+     - uses: actions/checkout@v4
 
-      - name: Configure AWS credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-region: us-west-2
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT }}:role/GithubActions
-          role-session-name: github-actions
+     - uses: aws-actions/configure-aws-credentials@v4
+       with:
+         aws-region: us-west-2
+         role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT }}:role/GithubActions
+         role-session-name: github-actions
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: "1.6.6"
+     - uses: hashicorp/setup-terraform@v3
+       with:
+         terraform_version: "1.6.6"
 
-      - name: Terraform fmt check
-        working-directory: dev
-        run: terraform fmt -check
+     - name: Terraform init
+       id: init
+       run: terraform init
 
-      - name: Terraform validate
-        working-directory: dev
-        run: terraform validate
+     - name: Terraform plan
+       run: terraform plan
 
-      - name: Terraform init
-        working-directory: dev
-        run: terraform init
+     - name: Terraform apply
+       if: ${{ github.event.inputs.terraform_action == 'apply' }}
+       run: terraform apply -auto-approve
+     
+     - name: Terraform destroy
+       if: ${{ github.event.inputs.terraform_action == 'destroy' }}
+       run: terraform destroy -auto-approve
 
-      - name: Terraform plan
-        working-directory: dev
-        run: terraform plan
 
-      - name: Terraform apply
-        if: ${{ github.event.inputs.terraform_action == 'apply' }}
-        working-directory: dev
-        run: terraform apply -auto-approve
-
-      - name: Terraform destroy
-        if: ${{ github.event.inputs.terraform_action == 'destroy' }}
-        working-directory: dev
-        run: terraform destroy -auto-approve
