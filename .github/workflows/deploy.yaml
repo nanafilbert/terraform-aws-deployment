@@ -41,15 +41,15 @@ jobs:
           terraform_version: "1.6.6"
 
       - name: Terraform fmt check
-        working-directory: environment/dev
+        working-directory: .
         run: terraform fmt -check
 
       - name: Terraform validate
-        working-directory: environment/dev
+        working-directory: .
         run: terraform validate
 
       - name: Terraform init
-        working-directory: environment/dev
+        working-directory: .
         run: terraform init
 
       - name: Terraform plan
