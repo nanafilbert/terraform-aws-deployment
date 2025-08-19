@@ -49,7 +49,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform init
-        working-directory: .
+        working-directory: environment/dev
         run: terraform init -reconfigure
 
       - name: Terraform plan
