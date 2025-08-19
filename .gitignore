@@ -1,0 +1,32 @@
+# === Terraform ===
+# Local .terraform directories
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Exclude lock file (optional, but recommended for reusable modules)
+.terraform.lock.hcl
+
+# Sensitive variable files
+terraform.tfvars
+*.auto.tfvars
+
+# === Keys & Secrets ===
+*.pem
+*.key
+
+# === Editor / OS ===
+# VS Code
+.vscode/
+# IntelliJ / JetBrains
+.idea/
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
