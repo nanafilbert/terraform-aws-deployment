@@ -1,6 +1,5 @@
 module "vpc" {
-  source = "C:/Users/filbe/terraform_aws_modules_repo/terraform_aws_module/modules/vpc"
-
+  source = "git::https://github.com/nanafilbert /terraform-aws-modules.git//modules/vpc?ref=v1.1.0" 
   name                   = var.name
  vpc_cidr                = var.vpc_cidr
   public_subnet_cidrs    = var.public_subnet_cidrs
@@ -13,8 +12,7 @@ module "vpc" {
 }
 
 module "security_grps" {
-  source = "C:/Users/filbe/terraform_aws_modules_repo/terraform_aws_module/modules/security_grps"
-
+  source = "git::https://github.com/nanafilbert /terraform-aws-modules.git//modules/security-grps?ref=v1.1.0" 
    vpc_id        = module.vpc.vpc_id
   https_port    = var.https_port
   protocol      = var.protocol
@@ -34,7 +32,7 @@ module "security_grps" {
 
 
 module "ec2" {
-  source = "C:/Users/filbe/terraform_aws_modules_repo/terraform_aws_module/modules/ec2"
+  source = "git::https://github.com/nanafilbert /terraform-aws-modules.git//modules/ec2?ref=v1.1.0" 
 
   name                       = var.name
   instances                  = var.instances
