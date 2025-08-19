@@ -53,15 +53,15 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
-        working-directory: .
+        working-directory: dev
         run: terraform plan
 
       - name: Terraform apply
         if: ${{ github.event.inputs.terraform_action == 'apply' }}
-        working-directory: .
+        working-directory: dev
         run: terraform apply -auto-approve
 
       - name: Terraform destroy
         if: ${{ github.event.inputs.terraform_action == 'destroy' }}
-        working-directory: .
+        working-directory: dev
         run: terraform destroy -auto-approve
