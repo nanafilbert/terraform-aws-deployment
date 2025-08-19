@@ -139,4 +139,17 @@ variable "user_data" {
 }
 
 
+variable "db_password" {
+  description = "Database password for the application"
+  type        = string
+  sensitive   = true
 
+}
+
+
+variable "db_username" {
+  description = "Database username for the application"
+  type        = string
+   
+}
+  
