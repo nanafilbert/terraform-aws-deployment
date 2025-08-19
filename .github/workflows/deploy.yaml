@@ -50,7 +50,7 @@ jobs:
 
       - name: Terraform init
         working-directory: .
-        run: terraform init
+        run: terraform init -reconfigure
 
       - name: Terraform plan
         working-directory: environment/dev
