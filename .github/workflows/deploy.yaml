@@ -41,15 +41,15 @@ jobs:
           terraform_version: "1.6.6"
 
       - name: Terraform fmt check
-        working-directory: dev
+        working-directory: .
         run: terraform fmt -check
 
       - name: Terraform validate
-        working-directory: dev
+        working-directory: .
         run: terraform validate
 
       - name: Terraform init
-        working-directory: dev
+        working-directory: .
         run: terraform init
 
       - name: Terraform plan
@@ -58,10 +58,10 @@ jobs:
 
       - name: Terraform apply
         if: ${{ github.event.inputs.terraform_action == 'apply' }}
-        working-directory: dev
+        working-directory: .
         run: terraform apply -auto-approve
 
       - name: Terraform destroy
         if: ${{ github.event.inputs.terraform_action == 'destroy' }}
-        working-directory: dev
+        working-directory: .
         run: terraform destroy -auto-approve
