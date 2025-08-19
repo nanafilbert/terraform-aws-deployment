@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    target-branch: "main"
+    reviewers:
+      - "nanafilbert"
+    schedule:
+      interval: "weekly"
+      time: "06:00"
+      timezone: "GMT"
+   
