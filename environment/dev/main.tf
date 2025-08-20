@@ -137,7 +137,7 @@ resource "aws_lb_target_group_attachment" "app_instances" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "filbert-tf-state-bucket_2025"
+  bucket = "filbert-tf-state-bucket"
 
     tags = merge(
     { 
@@ -150,7 +150,7 @@ resource "aws_s3_bucket" "my_bucket" {
 
 terraform {
   backend "s3" {
-    bucket = "filbert-tf-state-bucket_2025"
+    bucket = "filbert-tf-state-bucket"
     key = "devops/infrastructure/s3.tfstate"
     region = "us-east-2"
      use_lockfile = true
