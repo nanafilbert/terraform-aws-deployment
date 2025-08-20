@@ -33,8 +33,8 @@ db_username = "admin"
 
 tags = {
   environment = "development"
-  project     = "terraform_aws_module_vpc"
-  owner       = "filbert"
+  project     = "terraform_aws_module_assignment"
+  group       =  join(", ", var.group_members)
 }
 
 

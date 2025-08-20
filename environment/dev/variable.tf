@@ -153,3 +153,18 @@ variable "db_username" {
    
 }
   
+variable "group_members" {
+  description = "List of group members"
+  type        = list(string)
+  default     = [
+          "Emmanuel Buatsie-Detse",
+          "James Agbenu",
+          "Suzzette Naomi Sappor",
+          "Godfred Boateng",
+          "Emmanuel Atwam",
+          "Maxwell Tyron",
+          "Filbert Nana Blessing",
+  ]
+  
+  
+}
