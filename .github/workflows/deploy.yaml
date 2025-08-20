@@ -21,6 +21,7 @@ permissions:
 
 jobs:
   deploy_infra:
+    environment: dev
     name: Deploy AWS Infra
     runs-on: ubuntu-latest
 
