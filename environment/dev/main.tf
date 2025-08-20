@@ -137,7 +137,7 @@ resource "aws_lb_target_group_attachment" "app_instances" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "filber-tf-state-bucket"
+  bucket = "filbert-tf-state-bucket"
 
     tags = merge(
     { 
