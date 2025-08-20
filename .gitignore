@@ -14,8 +14,7 @@ crash.*.log
 .terraform.lock.hcl
 
 # Sensitive variable files
-terraform.tfvars
-*.auto.tfvars
+
 
 # === Keys & Secrets ===
 *.pem
