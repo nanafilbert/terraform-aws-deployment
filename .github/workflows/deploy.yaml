@@ -54,10 +54,11 @@ jobs:
 
       - name: Terraform Plan
         working-directory: environment/dev
-        run: terraform plan \
-          -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
-          -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" \
-          -out=tfplan
+        run: |
+         terraform plan \
+         -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
+         -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" \
+         -out=tfplan
 
 
       - name: Terraform Apply
