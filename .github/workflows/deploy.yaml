@@ -53,17 +53,23 @@ jobs:
         run: terraform init -reconfigure
 
       - name: Terraform Plan
-        working-directory: environment/dev
-        run: terraform plan -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" -out=tfplan
+        working-directory: environment/prod
+        run: terraform plan \
+          -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
+          -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" \
+          -out=tfplan
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.terraform_action == 'apply' }}
-        working-directory: environment/dev
-        run: terraform apply -auto-approve -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" tfplan
+        working-directory: environment/prod
+        run: terraform apply -auto-approve \
+          -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
+          -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" tfplan
 
       - name: Terraform Destroy
         if: ${{ github.event.inputs.terraform_action == 'destroy' }}
-        working-directory: environment/dev
-        run: terraform destroy -auto-approve -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}"
-
-      #.
+        working-directory: environment/prod
+        run: terraform destroy -auto-approve \
+          -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
+          -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}"
+      #..
