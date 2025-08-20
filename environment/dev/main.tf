@@ -164,8 +164,3 @@ provider "aws" {
 }
 
 
-tags = {
-  environment = "development"
-  project     = "terraform_aws_module_assignment"
-  group       =   join(", ", var.group_members)
-}
