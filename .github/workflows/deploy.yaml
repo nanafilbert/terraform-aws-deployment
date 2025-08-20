@@ -61,16 +61,15 @@ jobs:
           TF_VAR_Admin_CIDR: ${{ secrets.ADMIN_CIDR }}
 
       - name: Terraform Apply
-        if: ${{ github.event.inputs.terraform_action == 'apply' }}
-        working-directory: environment/prod
-        run: terraform apply -auto-approve \
-          -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
-          -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" tfplan
+        working-directory: environment/dev
+        run: |
+         terraform apply -auto-approve \
+           -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
+          -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}"
 
       - name: Terraform Destroy
-        if: ${{ github.event.inputs.terraform_action == 'destroy' }}
-        working-directory: environment/prod
-        run: terraform destroy -auto-approve \
-          -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
-          -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}"
-      #..
+        working-directory: environment/dev
+        run: |
+            terraform destroy -auto-approve \
+              -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" \
+              -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}"

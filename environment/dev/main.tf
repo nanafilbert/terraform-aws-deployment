@@ -66,7 +66,7 @@ resource "aws_db_subnet_group" "db_subnets" {
   
 }
 
-resource "aws_db_instance" "default" {
+resource "aws_db_instance" "mydb" {
   identifier          = "${var.name}-db"
   allocated_storage    = 10
 
