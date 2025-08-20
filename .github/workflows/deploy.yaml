@@ -48,21 +48,22 @@ jobs:
         working-directory: .
         run: terraform validate
 
-      - name: Terraform init
+      - name: Terraform Init
         working-directory: environment/dev
         run: terraform init -reconfigure
 
-      - name: Terraform plan
+      - name: Terraform Plan
         working-directory: environment/dev
-        run: terraform plan
+        run: terraform plan -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" -out=tfplan
 
-      - name: Terraform apply
+      - name: Terraform Apply
         if: ${{ github.event.inputs.terraform_action == 'apply' }}
         working-directory: environment/dev
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}" tfplan
 
-      - name: Terraform destroy
+      - name: Terraform Destroy
         if: ${{ github.event.inputs.terraform_action == 'destroy' }}
         working-directory: environment/dev
-        run: terraform destroy -auto-approve
-#
+        run: terraform destroy -auto-approve -var "Admin_CIDR=${{ secrets.ADMIN_CIDR }}"
+
+      #
