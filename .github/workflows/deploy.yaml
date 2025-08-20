@@ -44,6 +44,11 @@ jobs:
         working-directory: environment/dev
         run: terraform init -reconfigure
 
+      - name: Terraform Plan
+        working-directory: environment/dev
+        run: terraform plan 
+
+      
       - name: Terraform apply or Destroy
         working-directory: environment/dev
         run: |
