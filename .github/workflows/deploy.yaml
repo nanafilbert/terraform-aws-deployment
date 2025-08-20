@@ -60,4 +60,4 @@ jobs:
         if: ${{ github.event.inputs.terraform_action == 'destroy' }}
         working-directory: environment/dev
         run: terraform destroy -auto-approve
-#.
+#.#
