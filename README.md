@@ -194,8 +194,3 @@ License
 This project is for educational purposes and follows best practices for Terraform, AWS, and DevSecOps.
 
 
-
-
-
-
-Do you want me to do that next?
