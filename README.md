@@ -151,15 +151,27 @@ Validation and formatting: Terraform validate and fmt are included in CI workflo
 
 Architecture Diagram
 
-+----------------+      +--------------------+      +----------------+
-|   Internet     | ---> |   Application LB   | ---> | EC2 Instances  |
-+----------------+      +--------------------+      +----------------+
-                                  |
-                                  v
-                         +----------------+
-                         | RDS MySQL DB   |
-                         | (Private Subnet)|
-                         +----------------+
++----------------+
+|   Internet     |
++----------------+
+         |
+         v
++--------------------+
+| Application LB     |
++--------------------+
+         |
+         v
++----------------+
+| EC2 Instances  |
+| (Public Subnet)|
++----------------+
+         |
+         v
++----------------+
+| RDS MySQL DB   |
+| (Private Subnet)|
++----------------+
+
 Public Subnets host ALB and EC2 instances accessible from the internet.
 
 Private Subnets host RDS DB, inaccessible directly from the internet.
