@@ -30,7 +30,6 @@ echo "<h1>Hello from NGINX on $(hostname -f)</h1>" > /var/www/html/index.nginx-d
 EOT
 
 db_username = "admin"
-db_password = ""
 
 tags = {
   environment = "development"
