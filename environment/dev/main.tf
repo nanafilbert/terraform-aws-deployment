@@ -154,6 +154,7 @@ terraform {
     key = "devops/infrastructure/s3.tfstate"
     region = "us-east-2"
      use_lockfile = true
+     encrypt      = true
    
   }
   required_providers {
@@ -162,7 +163,7 @@ terraform {
       version = "6.8.0"
     }
   }
-  required_version = ">= 1.5.0"
+  required_version = ">= 1.10"
 }
 
 
