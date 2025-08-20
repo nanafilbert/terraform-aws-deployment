@@ -136,16 +136,7 @@ resource "aws_lb_target_group_attachment" "app_instances" {
   port             =80
 }
 
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "filbert-tf-state-bucket"
 
-    tags = merge(
-    { 
-      Name = "${var.name}-vpc"
-   },
-    var.tags
-  )
-}
 
 
 terraform {
