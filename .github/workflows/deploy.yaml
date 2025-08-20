@@ -53,9 +53,11 @@ jobs:
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.terraform_action == 'apply' }}
+        working-directory: environment/dev
         run: terraform apply -auto-approve
 
       - name: Terraform Destroy
         if: ${{ github.event.inputs.terraform_action == 'destroy' }}
+        working-directory: environment/dev
         run: terraform destroy -auto-approve
 #.
