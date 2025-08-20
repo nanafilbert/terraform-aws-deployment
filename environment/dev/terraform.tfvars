@@ -32,10 +32,15 @@ EOT
 db_username = "admin"
 
 tags = {
-
   environment = "development"
   project     = "terraform_aws_module_assignment"
-  group       = "Emmanuel Buatsie-Detse, James Agbenu, Suzzette Naomi Sappor, Godfred Boateng, Emmanuel Atwam, Maxwell Tyron, Filbert Nana Blessing"
+  member1     = "Emmanuel Buatsie-Detse"
+  member2     = "James Agbenu"
+  member3     = "Suzzette Naomi Sappor"
+  member4     = "Godfred Boateng"
+  member5     = "Emmanuel Atwam"
+  member6     = "Maxwell Tyron"
+  member7     = "Filbert Nana Blessing"
 }
 
 
