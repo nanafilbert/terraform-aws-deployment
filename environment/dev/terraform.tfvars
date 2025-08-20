@@ -38,7 +38,7 @@ tags = {
   member2     = "James Agbenu"
   member3     = "Suzzette Naomi Sappor"
   member4     = "Godfred Boateng"
-  member5     = "Emmanuel Atwam"
+  member5     = "Emmanuel (DareDev-tech)"
   member6     = "Maxwell Tyron"
   member7     = "Filbert Nana Blessing"
 }
