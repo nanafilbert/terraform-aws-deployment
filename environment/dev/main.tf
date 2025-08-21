@@ -136,7 +136,25 @@ resource "aws_lb_target_group_attachment" "app_instances" {
   port             =80
 }
 
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "filbert-tf-state-bucket"
 
+   tags = merge(
+    { 
+      Name = "${var.name}-vpc"
+   },
+    var.tags
+  )
+}
+
+resource "aws_s3_bucket_public_access_block" "my_bucket" {
+  bucket = aws_s3_bucket.my_bucket.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
 
 
 terraform {
